@@ -1,9 +1,14 @@
 
-williamyeh.fluentd for Ansible Galaxy
+Forked from williamyeh.fluentd for Ansible Galaxy
 ============
 
 
 [![Circle CI](https://circleci.com/gh/William-Yeh/ansible-fluentd.svg?style=shield)](https://circleci.com/gh/William-Yeh/ansible-fluentd) [![Build Status](https://travis-ci.org/William-Yeh/ansible-fluentd.svg?branch=master)](https://travis-ci.org/William-Yeh/ansible-fluentd)
+
+
+## CHANGES IN THIS VERSION
+
+Upgrades installation of td-agent for Ubuntu Xenial server.
 
 
 ## Summary
