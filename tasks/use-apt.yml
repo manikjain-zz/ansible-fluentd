@@ -19,7 +19,6 @@
 - name: add td-agent repository
   apt_repository: repo='deb https://packages.treasuredata.com/2/{{ ansible_distribution|lower }}/{{ ansible_distribution_release|lower }}/ {{ ansible_distribution_release|lower }} contrib' state=present
 
-
 - name: install td-agent
   apt: name=td-agent  update_cache=yes  state=present force=yes
   when: tdagent_version is not defined
@@ -28,7 +27,10 @@
   apt: name="td-agent={{ tdagent_version }}*"  update_cache=yes  state=present force=yes
   when: tdagent_version is defined
 
-
+- name: upgrade td-agent for Ubuntu Xenial
+  shell: 'curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent3.sh | sh'
+  args:
+    warn: false
 
 - name: install libcurl and make for compiling plugins
   apt: name={{ item }}  state=present update_cache=yes
@@ -36,8 +38,6 @@
     - libcurl4-gnutls-dev
     - build-essential
   when: tdagent_plugins is defined or tdagent_plugins_versions is defined
-
-
 
 - name: set INIT status and start
   service: name=td-agent state=started enabled=yes
